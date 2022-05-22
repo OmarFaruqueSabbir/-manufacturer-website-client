@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import {  useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../../components/Loading/Loading';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
@@ -16,9 +17,18 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [token] = useToken(user)
+
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    let from = location.state?.from?.pathname || "/";
+
+        if (token) {
+            navigate(from, { replace: true });
+        }
+
+
+ 
     const gotoRegister = () => {
         navigate('/register');
     }
@@ -35,9 +45,7 @@ const Login = () => {
             </p>
     }
 
-    if (user) {
-        navigate(from, { replace: true });
-    }
+
 
     const handleLogIn = async event => {
         event.preventDefault();

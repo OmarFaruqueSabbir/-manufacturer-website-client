@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfil
 import SocialLogin from '../SocialLogin/SocialLogin';
 import auth from '../../../firebase.init';
 import Loading from '../../../components/Loading/Loading';
+import useToken from '../../../hooks/useToken';
 
 
 const Register = () => {
@@ -17,9 +18,16 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, error1] = useUpdateProfile(auth);
 
+    const [token] = useToken(user)
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+    if (token) {
+        navigate(from, { replace: true });
+    }
+
+
     const gotoLogin = () => {
         navigate('/login');
     }
@@ -36,9 +44,8 @@ const Register = () => {
             </p>
     }
 
-    if (user) {
-        navigate(from, { replace: true });
-    }
+ 
+
 
     const handleRegister = async event => {
         event.preventDefault();
