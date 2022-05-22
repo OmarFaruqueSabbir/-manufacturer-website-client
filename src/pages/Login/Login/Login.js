@@ -1,24 +1,65 @@
-import React from 'react';
-import {  useNavigate } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {  useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../../../components/Loading/Loading';
+import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
+    const emailRef = useRef("");
+    const passRef = useRef("");
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const gotoRegister = () => {
         navigate('/register');
     }
+
+    if (loading) {
+        return <Loading />
+    }
+
+    let errorMessage;
+
+    if (error) {
+        errorMessage =
+            <p className='text-red-600'>Error: {error?.message}
+            </p>
+    }
+
+    if (user) {
+        navigate(from, { replace: true });
+    }
+
+    const handleLogIn = async event => {
+        event.preventDefault();
+        const email = emailRef.current.value;
+        const password = passRef.current.value;
+
+       await signInWithEmailAndPassword(email, password);
+
+    }
     return (
         <div>
-            <div class="flex flex-col items-center justify-center w-screen h-screen bg-gray-200 text-gray-700">
+            <div className="flex flex-col items-center justify-center w-screen h-screen bg-gray-200 text-gray-700">
 
                 {/* <!-- Component Start --> */}
-                <h1 class="font-bold text-2xl">Login Here </h1>
-                <form class="flex flex-col bg-white rounded shadow-lg p-10 mt-12" action="" >
+                <h1 className="font-bold text-2xl">Login Here </h1>
+                <form onSubmit={handleLogIn} className="flex flex-col bg-white rounded shadow-lg p-10 mt-12" action="" >
                     <div>
                         <label htmlFor="email" className="text-sm text-left font-medium">Email</label>
 
                         <div className="relative mt-1">
                             <input
+                                ref={emailRef}
                                 type="email"
                                 id="email"
                                 name='email'
@@ -49,6 +90,7 @@ const Login = () => {
 
                         <div className="relative mt-1">
                             <input
+                                ref={passRef}
                                 type="password"
                                 id="password"
                                 name='password'
@@ -80,14 +122,17 @@ const Login = () => {
                             </span>
                         </div>
                     </div>
-                    <button class="flex items-center justify-center h-12 px-6 w-80 bg-gray-800 mt-8 rounded font-semibold text-sm text-blue-100 hover:bg-gray-900">Login</button>
-                    <div class="flex mt-6 justify-center text-xs">
-                        <a class="text-blue-400 pr-5  hover:text-blue-500" href="#">Forgot Password?</a>
-                        <span class="mx-2 text-gray-300">/</span>
-                        <p class="text-blue-400 hover:text-blue-500">
+                    <button className="flex items-center justify-center h-12 px-6 w-80 bg-gray-800 mt-8 rounded font-semibold text-sm text-blue-100 hover:bg-gray-900">Login</button>
+                    <div className="flex mt-6 justify-center text-xs">
+                        <a className="text-blue-400 pr-5  hover:text-blue-500" href="#">Forgot Password?</a>
+                        <span className="mx-2 text-gray-300">/</span>
+                        <p className="text-blue-400 hover:text-blue-500">
                            <span onClick={gotoRegister}>New User? Sign Up here..</span></p>
                     </div>
-                    <div class="divider">OR</div>
+                    {
+                            errorMessage
+                    }
+                    <div className="divider">OR</div>
                     <SocialLogin />
 
                 </form>
