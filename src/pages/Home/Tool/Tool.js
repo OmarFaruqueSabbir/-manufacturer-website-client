@@ -1,7 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Tool = ({ tool }) => {
-    const { name, price, img, description, minimumQuantity, availableQuantity } = tool;
+    const {_id, name, price, img, description, minimumQuantity, availableQuantity } = tool;
+    const navigate = useNavigate();
+    const handleToolPurchase = id => {
+        navigate(`/tool/${id}`)
+    }
     return (
         <div>
 
@@ -25,7 +30,7 @@ const Tool = ({ tool }) => {
 
                         <div class="flex justify-between mt-3 items-center">
                             <h1 class="text-lg font-bold text-gray-700 dark:text-gray-200 md:text-xl">${price} <span className='text-sm'>per unit</span></h1>
-                            <button class="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Place Order</button>
+                            <button onClick={() => handleToolPurchase(_id)} class="px-2 py-1 text-xs font-bold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600">Place Order</button>
                         </div>
                     </div>
                 </div>

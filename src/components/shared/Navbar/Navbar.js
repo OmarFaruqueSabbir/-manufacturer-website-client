@@ -1,11 +1,18 @@
 import { Transition } from '@headlessui/react';
+import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import logo from '../../../images/tool.png'
 import LinkCustom from '../../../LinkCustom/LinkCustom';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [user] = useAuthState(auth);
+    const handleSignOut = () =>{
+      signOut(auth);
+  }
     return (
   
       <nav className="bg-gray-900">
@@ -59,12 +66,17 @@ const Navbar = () => {
                 >
                   ABOUT
                 </LinkCustom>
-                <LinkCustom
-                  to='/login'
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  LOGIN
-                </LinkCustom>
+                {
+                user ?
+                  <button className='bg-orange-500 p-2 rounded text-white' onClick={handleSignOut}>signOut</button>
+                  :
+                  <LinkCustom
+                    to='/login'
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  >
+                    LOGIN
+                  </LinkCustom>
+              }
               </div>
             </div>
   
