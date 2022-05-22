@@ -12,8 +12,8 @@ const Login = () => {
             <div class="flex flex-col items-center justify-center w-screen h-screen bg-gray-200 text-gray-700">
 
                 {/* <!-- Component Start --> */}
-                <h1 class="font-bold text-2xl">Welcome Back : Login Here </h1>
-                <form class="flex flex-col bg-white rounded shadow-lg p-12 mt-12" action="" >
+                <h1 class="font-bold text-2xl">Login Here </h1>
+                <form class="flex flex-col bg-white rounded shadow-lg p-10 mt-12" action="" >
                     <div>
                         <label htmlFor="email" className="text-sm text-left font-medium">Email</label>
 

@@ -1,0 +1,92 @@
+[
+    {
+        "_id": 1,
+        "name": "Paint Roller Brush",
+        "price": "500",
+        "description": "Package Contents: 2 * 2inch Foam Roller Cover , 2 * 2inch Wool Roller Cover, 1 * 2inch Roller Handle & 1 * 2inch Paint Tray",
+        "minimumQuantity": 10,
+        "availableQuantity": 30,
+        "img": "https://i.ibb.co/yRmNtvW/roller-1.jpg"
+    },
+    {
+        "_id": 2,
+        "name": "Hack Saw",
+        "price": "350",
+        "minimumQuantity": 10,
+        "availableQuantity": 30,
+        "description": "Blade Material contains High Carbon Steel, Length is 12/300 mm , Weight contains 510g, Handle - TPR Handle.",
+        "img": "https://i.ibb.co/sgNvBhV/hacksaw-1.jpg"
+    },
+    {        
+        "_id": 3,
+        "name": "Drill Machine",
+        "price": "330",
+        "minimumQuantity": 10,
+        "availableQuantity": 30,
+        "description": "High quality steel, special hardening processing, Non-slip handle, wearable and with long life time, not easy to rust.",
+        "img": "https://i.ibb.co/4VsC0jX/drill.jpg"
+    },
+    {
+        "_id": 4,
+        "name": "Wood Chisel",
+        "price": "333",
+        "minimumQuantity": 10,
+        "availableQuantity": 30,
+        "description": "Material: CrV Same as Picture, Two-component plastic handle, Plastic handle non-slip & Cutting sharp nose, ensuring high accuracy.",
+        "img": "https://i.ibb.co/y5mfY7S/chisel-1.jpg"
+    },
+    {
+        "_id": 5,
+        "name": "Measuring Steel Tape",
+        "price": "480",
+        "minimumQuantity": 10,
+        "availableQuantity": 30,
+        "description": "The whole is of heat treatment, high hardness and durable, Portable design, comfortable to hold, Compact appearance, easy to carry and use",
+        "img": "https://i.ibb.co/WFf4G21/measuringtape-1.jpg"
+    },
+    {
+        "_id": 6,
+        "name": "Piler",
+        "price": "322",
+        "minimumQuantity": 10,
+        "availableQuantity": 30,
+        "description": "Type: Combination Pliers, 55 forged carbon steel, Nickel finish, Bi-color dipped handle & Plastic grip handle for comfortable and easy use",
+        "img": "https://i.ibb.co/vDNZsfD/piler-1.jpg"
+    },
+    {
+        "_id": 7,
+        "name": "Hammer",
+        "price": "500",        
+        "minimumQuantity": 10,
+        "availableQuantity": 30,
+        "description": "Drop-forged carbon steel hammerhead, Heat treatment, ground polished, Light weight fiberglass handle, Face Diameter: 29mm & Head weight: 16oz or 450g",
+        "img": "https://ibb.co/0jtmbMs"
+    },
+    {
+        "_id": 8,
+        "name": "Screw-Driver Box",
+        "price": "290",        
+        "minimumQuantity": 10,
+        "availableQuantity": 30,
+        "description": "32-in-1 B_idirectional Operation Precision screw driver tool set, Non-slip handle, it has been ergonomically designed to make things, comfortable and increase torque",
+        "img": "https://ibb.co/9pf30xv"
+    },
+    {
+        "_id": 9,
+        "name": "Wrench",
+        "price": "250",
+        "minimumQuantity": 10,
+        "availableQuantity": 30,
+        "description": "High quality steel, special hardening processing, Non-slip handle, wearable and with long life time, not easy to rust, bigallen key screwdriver hand tool hex wrench micro mini hexagon set",
+        "img": "https://ibb.co/z2zp26q"
+    },
+    {
+        "_id": 10,
+        "name": "Shovel",
+        "price": "455",       
+        "minimumQuantity": 10,
+        "availableQuantity": 30,
+        "description": "Handle length: 13.5 cm/ 5.3 inches, w_idth: 7.5 cm/ 2.95 inches , Shovel head length: 16.5 cm /6.5 inches & Weight: 127 g/ 0.28 lb",
+        "img": "https://ibb.co/pRj4YXT"
+    }
+]
