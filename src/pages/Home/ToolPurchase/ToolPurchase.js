@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { set } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import Loading from '../../../components/Loading/Loading';
 import auth from '../../../firebase.init';
@@ -8,6 +9,9 @@ const ToolPurchase = () => {
     const { toolId } = useParams();
     const [user, loading] = useAuthState(auth);
     const [tool, setTool] = useState({});
+
+
+    const [agree, setAgree] = useState(true)
 
 
     useEffect(() => {
@@ -19,9 +23,10 @@ const ToolPurchase = () => {
     }, []);
 
 
-
+    const [value, setValue] = useState(tool?.minimumQuantity)
     const handleOrder = event => {
         event.preventDefault();
+
         let order = {
             toolId: tool?._id,
             tool: tool?.name,
@@ -34,8 +39,13 @@ const ToolPurchase = () => {
         }
 
 
-        if (event.target.order.value > tool.availableQuantity || event.target.order.value < tool.minimumQuantity) {
-            alert('Place Valid Quantity')
+        if (event.target.order.value > tool.availableQuantity) {
+            setAgree(!agree)
+            alert('Sorry!! Item amount exceeded')
+
+        } else if (event.target.order.value < tool.minimumQuantity) {
+            setAgree(!agree)
+            alert('Please increase order amount')
         } else {
             fetch("http://localhost:5000/orders", {
                 method: 'POST',
@@ -64,28 +74,31 @@ const ToolPurchase = () => {
              */}
             <div className='container '>
                 <form className='flex flex-col w-full max-w-lg m-auto py-10 mt-10 px-10 border' onSubmit={handleOrder} >
+                    <h2 className='text-left text-lg font-base  text-gray-700 dark:text-gray-200 md:text-xl mb-2'><strong>Name:</strong>  {tool?.name}  </h2>
+                    <h2 className='text-left text-lg font-base  text-gray-700 dark:text-gray-200 md:text-xl mb-2'> <strong>Price: </strong>{tool?.price} </h2>
 
-                    <h2 className='text-left text-lg font-bold  text-gray-700 dark:text-gray-200 md:text-xl mb-2'>Name: {tool?.name} </h2>
-                    <h2 className='text-left text-lg font-bold  text-gray-700 dark:text-gray-200 md:text-xl mb-2'>Price: {tool?.price} </h2>
-
-                    <h1 className="text-left text-lg font-bold mb-3  text-gray-700 dark:text-gray-200 md:text-xl">items available {tool.availableQuantity}  </h1>
-                    <h1 className="text-left text-lg font-bold mb-3  text-gray-700 dark:text-gray-200 md:text-xl">minimum Quantity {tool.minimumQuantity}  </h1>
+                    <h1 className="text-left text-lg font-base mb-3  text-gray-700 dark:text-gray-200 md:text-xl"><strong>Items available : </strong>  {tool.availableQuantity}  </h1>
+                    <h1 className="text-left text-lg font-base mb-3  text-gray-700 dark:text-gray-200 md:text-xl"><strong>Minimum Quantity : </strong> {tool.minimumQuantity}  </h1>
                     <input className='mb-2 input input-bordered w-full max-w-md' name='name' type="text" disabled value={user?.displayName}
                     />
- 
+
 
                     <input name='email' type="email" disabled value={user?.email || ""} className="mb-2 input input-bordered w-full max-w-md" />
-                    <input name='order' type="number" placeholder="Input Orders" className="input mb-2 input-bordered w-full max-w-md" />
+                    <label htmlFor="email" className="text-sm text-left font-medium">Input Order Quantity</label>
+                    <input name='order' defaultValue={tool?.minimumQuantity} type="number" className="input mb-2 input-bordered w-full max-w-md" />
+                    {/* <input name='order' type="number" placeholder="Input Order Quantity" className="input mb-2 input-bordered w-full max-w-md" /> */}
                     <input name='address' type="text" placeholder="Address" className="input input-bordered mb-2 w-full max-w-md" />
                     <input name='phone' type="number" placeholder="Phone Number" className="input input-bordered mb-2 w-full max-w-md" />
-                    <button
-                        className="mt-4 w-full bg-gray-600 hover:bg-gray-800 text-green-100 border shadow py-3 px-6 font-semibold text-md rounded"
+                    <button disabled={!agree}
+                        className="mt-4 w-full bg-gray-600 disabled:bg-red-800 text-green-100 border shadow py-3 px-6 font-semibold text-md rounded"
                         type="submit"
                     >
                         Submit
                     </button>
+
                 </form>
             </div>
+
         </div>
     );
 };
