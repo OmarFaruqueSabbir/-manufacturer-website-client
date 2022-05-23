@@ -26,13 +26,13 @@ const AllUsers = () => {
         })
         .then(res => {
             if(res.status === 403){
-                alert('failed to make an admin')
+                alert('make admin turns failed')
             }
             return res.json()})
         .then(data => {
             if(data.modifiedCount > 0){
                 refetch();
-                alert(`Successfully made an admin`)
+                alert(`admin made successfully`)
             }
         })
 
