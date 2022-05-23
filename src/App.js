@@ -22,13 +22,6 @@ function App() {
         <Route path='/dashboard' element={ <Dashboard /> }>
         <Route index element={<MyOrders></MyOrders>}></Route>
 
-          {/* <Route index element={<MyAppointment></MyAppointment>}></Route>
-          <Route path="review" element={<MyReview></MyReview>}></Route>
-          <Route path="payment/:id" element={<Payment />}></Route>
-          <Route path="users" element={<RequireAdmin><Users /></RequireAdmin>}></Route>
-          <Route path="addDoctor" element={<RequireAdmin><AddDoctor /></RequireAdmin>}></Route>
-          <Route path="manageDoctor" element={<RequireAdmin><ManageDoctors /></RequireAdmin>}></Route> */}
-
         </Route>
       </Routes>
     </div>

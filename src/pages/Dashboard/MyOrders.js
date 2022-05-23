@@ -61,6 +61,7 @@ const MyOrders = () => {
                             <th>Quantity</th>
                             <th>Tool</th>
                             <th>Action</th>
+                            <th>Pay</th>
 
                         </tr>
                     </thead>
@@ -75,6 +76,7 @@ const MyOrders = () => {
                                 <td>{order.tool}</td>
                                 {/* <td><button onClick={() => deleteItem(order._id)} className='btn bg-red-600' >Delete</button></td> */}
                                 <td><button onClick={() => deleteItem(order._id)} className='btn bg-red-600' >Delete</button></td>
+                                <td><button onClick={() => deleteItem(order._id)} className='btn bg-blue-600' >Pay</button></td>
                             </tr>)
                         }
 
