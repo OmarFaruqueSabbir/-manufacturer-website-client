@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/shared/Navbar/Navbar';
+import AllUsers from './pages/Dashboard/AllUsers';
 import Dashboard from './pages/Dashboard/Dashboard';
 import MyOrders from './pages/Dashboard/MyOrders';
 import Home from './pages/Home/Home';
@@ -18,11 +19,13 @@ function App() {
         <Route path='/tool/:toolId' element={<ToolPurchase />}></Route>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/dashboard' element={ <Dashboard /> }>
+
+        <Route path='/dashboard' element={<Dashboard />}>
         <Route index element={<MyOrders></MyOrders>}></Route>
+        <Route path='allUsers' element={<AllUsers></AllUsers>}></Route>
 
         </Route>
+
       </Routes>
     </div>
   );
