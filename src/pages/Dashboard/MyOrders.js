@@ -31,6 +31,22 @@ const MyOrders = () => {
                 });
         }
     }, [user])
+
+    const deleteItem = id => {
+        const agree =   window.confirm('Want to delete Items?');
+        if (agree) {
+            const url = `http://localhost:5000/orders/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    const remaining = orders.filter(order => order._id !== id);
+                    setOrders(remaining);
+                })
+        }
+    }
     return (
         <div>
             <h2>Orders: {orders?.length} </h2>
@@ -44,6 +60,8 @@ const MyOrders = () => {
                             <th>User</th>
                             <th>Quantity</th>
                             <th>Tool</th>
+                            <th>Action</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +73,8 @@ const MyOrders = () => {
                                 <td>{order.userName}</td>
                                 <td>{order.quantity}</td>
                                 <td>{order.tool}</td>
+                                {/* <td><button onClick={() => deleteItem(order._id)} className='btn bg-red-600' >Delete</button></td> */}
+                                <td><button onClick={() => deleteItem(order._id)} className='btn bg-red-600' >Delete</button></td>
                             </tr>)
                         }
 
