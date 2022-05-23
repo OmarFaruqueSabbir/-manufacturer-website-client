@@ -51,10 +51,11 @@ const Register = () => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const name = nameRef.current.value;
+        const namee = nameRef.current.value;
+        console.log(namee)
 
-        createUserWithEmailAndPassword(email, password);
-        await updateProfile({ displayName: name });
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: namee });
     }
 
     return (
@@ -72,7 +73,7 @@ const Register = () => {
                         <input
                             ref={nameRef}
                             type="text"
-                            id="email"
+                            id="name"
                             name='name'
                             className="w-80 p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                             placeholder="Enter Name"

@@ -33,6 +33,7 @@ const ToolPurchase = () => {
             phone: event.target.phone.value
         }
 
+
         if (event.target.order.value > tool.availableQuantity || event.target.order.value < tool.minimumQuantity) {
             alert('Place Valid Quantity')
         } else {
@@ -69,8 +70,9 @@ const ToolPurchase = () => {
 
                     <h1 className="text-left text-lg font-bold mb-3  text-gray-700 dark:text-gray-200 md:text-xl">items available {tool.availableQuantity}  </h1>
                     <h1 className="text-left text-lg font-bold mb-3  text-gray-700 dark:text-gray-200 md:text-xl">minimum Quantity {tool.minimumQuantity}  </h1>
-                    <input className='mb-2 input input-bordered w-full max-w-md' name='name' type="text" disabled value={user?.displayName || ""}
+                    <input className='mb-2 input input-bordered w-full max-w-md' name='name' type="text" disabled value={user?.displayName}
                     />
+ 
 
                     <input name='email' type="email" disabled value={user?.email || ""} className="mb-2 input input-bordered w-full max-w-md" />
                     <input name='order' type="number" placeholder="Input Orders" className="input mb-2 input-bordered w-full max-w-md" />
