@@ -75,7 +75,7 @@ const MyOrders = () => {
                                 <td>{order.quantity}</td>
                                 <td>{order.tool}</td>
                                 {/* <td><button onClick={() => deleteItem(order._id)} className='btn bg-red-600' >Delete</button></td> */}
-                                <td><button onClick={() => deleteItem(order._id)} className='btn bg-red-600' >Delete</button></td>
+                                <td><button onClick={() => deleteItem(order._id)} className='btn bg-red-600 text-white'  >Cancel</button></td>
                                 <td>{(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}> <button className='btn btn-success px-5'>Pay</button> </Link> }
                                 {(order.price && order.paid) && <div>
                                     
