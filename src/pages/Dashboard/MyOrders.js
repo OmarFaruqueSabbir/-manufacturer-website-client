@@ -11,7 +11,7 @@ const MyOrders = () => {
     const navigate = useNavigate()
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/orders?user=${user.email}`,{
+            fetch(`http://localhost:5000/order?user=${user.email}`,{
                 method: 'GET',
                 headers:{
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -35,7 +35,7 @@ const MyOrders = () => {
     const deleteItem = id => {
         const agree =   window.confirm('Want to delete Items?');
         if (agree) {
-            const url = `http://localhost:5000/orders/${id}`
+            const url = `http://localhost:5000/order/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
@@ -76,7 +76,9 @@ const MyOrders = () => {
                                 <td>{order.tool}</td>
                                 {/* <td><button onClick={() => deleteItem(order._id)} className='btn bg-red-600' >Delete</button></td> */}
                                 <td><button onClick={() => deleteItem(order._id)} className='btn bg-red-600' >Delete</button></td>
-                                <td><button onClick={() => deleteItem(order._id)} className='btn bg-blue-600' >Pay</button></td>
+                                <td>{(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}> <button className='btn btn-success px-5'>Pay</button> </Link> }
+                                {(order.price && order.paid) &&  <span className='text-success'>paid</span> }
+                                </td>
                             </tr>)
                         }
 

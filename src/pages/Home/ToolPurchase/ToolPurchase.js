@@ -9,6 +9,7 @@ const ToolPurchase = () => {
     const { toolId } = useParams();
     const [user, loading] = useAuthState(auth);
     const [tool, setTool] = useState({});
+    const [control, setControl] = useState(false);
 
 
     const [agree, setAgree] = useState(true)
@@ -20,17 +21,22 @@ const ToolPurchase = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setTool(data));
-    }, []);
+    }, [control]);
 
 
     
     const handleOrder = event => {
         event.preventDefault();
+        const orderQuantity= parseInt(event.target.order.value)
+        const newQuan= tool.availableQuantity- orderQuantity;
+        const total=tool?.price * orderQuantity;
+        console.log(newQuan)
 
         let order = {
             toolId: tool?._id,
             tool: tool?.name,
             price: tool?.price,
+            totalprice: total,
             quantity: event.target.order.value,
             user: user?.email,
             userName: user?.displayName,
@@ -48,17 +54,18 @@ const ToolPurchase = () => {
             alert('Please increase order amount')
         } else {
             setAgree(agree)
-            fetch("http://localhost:5000/orders", {
-                method: 'POST',
+            fetch(`http://localhost:5000/order/${toolId}`, {
+                method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify(order)
+                body: JSON.stringify(order, newQuan)
             })
                 .then(res => res.json())
                 .then(result => {
                     console.log(result);
                     alert("order placed..")
+                    setControl(!control)
                     event.target.reset()
                 })
         };
