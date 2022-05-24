@@ -95,7 +95,7 @@ const ToolPurchase = () => {
                     <input name='address' type="text" placeholder="Address" className="input input-bordered mb-2 w-full max-w-md" />
                     <input name='phone' type="number" placeholder="Phone Number" className="input input-bordered mb-2 w-full max-w-md" />
                     <button disabled={!agree}
-                        className="mt-4 w-full bg-gray-600 disabled:bg-gray-400 text-green-100 border shadow py-3 px-6 font-semibold text-md rounded"
+                        className="mt-4 w-full bg-gray-900 disabled:bg-gray-400 text-green-100 border shadow py-3 px-6 font-semibold text-md rounded"
                         type="submit"
                     >
                         Submit
