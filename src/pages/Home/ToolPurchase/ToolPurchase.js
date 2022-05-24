@@ -23,7 +23,7 @@ const ToolPurchase = () => {
     }, []);
 
 
-    const [value, setValue] = useState(tool?.minimumQuantity)
+    
     const handleOrder = event => {
         event.preventDefault();
 
@@ -47,6 +47,7 @@ const ToolPurchase = () => {
             setAgree(!agree)
             alert('Please increase order amount')
         } else {
+            setAgree(agree)
             fetch("http://localhost:5000/orders", {
                 method: 'POST',
                 headers: {
@@ -90,7 +91,7 @@ const ToolPurchase = () => {
                     <input name='address' type="text" placeholder="Address" className="input input-bordered mb-2 w-full max-w-md" />
                     <input name='phone' type="number" placeholder="Phone Number" className="input input-bordered mb-2 w-full max-w-md" />
                     <button disabled={!agree}
-                        className="mt-4 w-full bg-gray-600 disabled:bg-red-800 text-green-100 border shadow py-3 px-6 font-semibold text-md rounded"
+                        className="mt-4 w-full bg-gray-600 disabled:bg-gray-400 text-green-100 border shadow py-3 px-6 font-semibold text-md rounded"
                         type="submit"
                     >
                         Submit

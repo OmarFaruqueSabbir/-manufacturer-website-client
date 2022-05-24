@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import RequireAdmin from './components/auth/requireAdmin';
+import RequireAuth from './components/auth/requireAuth';
 import Navbar from './components/shared/Navbar/Navbar';
 import AllUsers from './pages/Dashboard/AllUsers';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -20,9 +22,9 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
 
-        <Route path='/dashboard' element={<Dashboard />}>
+        <Route path='/dashboard' element={<RequireAuth> <Dashboard /> </RequireAuth>}>
         <Route index element={<MyOrders></MyOrders>}></Route>
-        <Route path='allUsers' element={<AllUsers></AllUsers>}></Route>
+        <Route path='allUsers' element={<RequireAdmin><AllUsers /></RequireAdmin>}></Route>
 
         </Route>
 
