@@ -1,7 +1,15 @@
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
+import CheckoutForm from './CheckoutForm';
+
+const stripePromise = loadStripe('pk_test_51L11vYH24CK2sP5ktWt1TMrAd5GNgVVdNFbCiiewKYxYC0FbQvDJtS2TUOrZ7nBoXzWTWS6yL66xf0UZT74mJJ4a003ioJcDft');
+
+
+
 
 const Payment = () => {
     const { id } = useParams()
@@ -29,13 +37,12 @@ const Payment = () => {
                     <p className='text-left'>please pay: ${order.totalprice}</p>
  
                 </div>
+                <div class="divider divider-horizontal"></div>
 
                 <div class="card-body w-50 max-w-md">
-                    <h2 class="card-title">New album is released!</h2>
-                    <p>Click the button to listen on Spotiwhy app.</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Listen</button>
-                    </div>
+                <Elements stripe={stripePromise}>
+                    <CheckoutForm order={order} />
+                </Elements>
                 </div>
             </div>
 

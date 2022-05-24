@@ -28,9 +28,11 @@ const ToolPurchase = () => {
     const handleOrder = event => {
         event.preventDefault();
         const orderQuantity= parseInt(event.target.order.value)
-        const newQuan= tool.availableQuantity- orderQuantity;
+        const newQuan= parseInt(tool.availableQuantity) - orderQuantity;
+        
         const total=tool?.price * orderQuantity;
         console.log(newQuan)
+        console.log(typeof(newQuan))
 
         let order = {
             toolId: tool?._id,
@@ -59,7 +61,7 @@ const ToolPurchase = () => {
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify(order, newQuan)
+                body: JSON.stringify({order, newQuan})
             })
                 .then(res => res.json())
                 .then(result => {
@@ -69,17 +71,12 @@ const ToolPurchase = () => {
                     event.target.reset()
                 })
         };
-
-
-
-
     }
 
     return (
         <div>
-            {/* <h1>This is Tool Purchase</h1>
-            <h3 className='text-3xl mt-5 mb-5 font-medium'>Add a new Inventory</h3>
-             */}
+            <h3 className='text-3xl mt-5 mb-5 font-medium'>Please Place Your Order</h3>
+            
             <div className='container '>
                 <form className='flex flex-col w-full max-w-lg m-auto py-10 mt-10 px-10 border' onSubmit={handleOrder} >
                     <h2 className='text-left text-lg font-base  text-gray-700 dark:text-gray-200 md:text-xl mb-2'><strong>Name:</strong>  {tool?.name}  </h2>
