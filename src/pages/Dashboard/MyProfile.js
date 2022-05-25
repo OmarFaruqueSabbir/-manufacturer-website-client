@@ -74,8 +74,8 @@ const MyProfile = () => {const [infos, setInfos] = useState([])
                                 <td>{info.location}</td>
                                 <td>{info.phone}</td>
                                 {/* <td><button onClick={() => deleteItem(order._id)} className='btn bg-red-600' >Delete</button></td> */}
-                                <td><button className='btn btn-success px-5'>Update</button> 
-                                {/* <td> <Link to={`/dashboard/payment/${info._id}`}> <button className='btn btn-success px-5'>Pay</button> </Link>  */}
+                                {/* <td><button className='btn btn-success px-5'>Update</button></td> */}
+                                <td> <Link to={`/dashboard/update/${info._id}`}> <button className='btn btn-success px-5'>Update</button> </Link> 
                                 
                                 </td>
                             </tr>)

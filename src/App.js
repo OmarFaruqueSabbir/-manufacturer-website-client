@@ -17,6 +17,7 @@ import ToolPurchase from './pages/Home/ToolPurchase/ToolPurchase';
 import Login from './pages/Login/Login/Login';
 import Register from './pages/Login/Register/Register';
 import MyProfile from './pages/Dashboard/MyProfile';
+import UpdateProfile from './pages/Dashboard/UpdateProfile';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path='addProducts' element={<AddProducts />}></Route>
         <Route path='insertProfile' element={<InsertProfile />}></Route>
         <Route path='myProfile' element={<MyProfile />}></Route>
+        <Route path='update/:id' element={<UpdateProfile />}></Route>
 
         </Route>
 

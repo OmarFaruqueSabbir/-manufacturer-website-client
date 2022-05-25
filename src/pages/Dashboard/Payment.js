@@ -8,9 +8,6 @@ import CheckoutForm from './CheckoutForm';
 
 const stripePromise = loadStripe('pk_test_51L11vYH24CK2sP5ktWt1TMrAd5GNgVVdNFbCiiewKYxYC0FbQvDJtS2TUOrZ7nBoXzWTWS6yL66xf0UZT74mJJ4a003ioJcDft');
 
-
-
-
 const Payment = () => {
     const { id } = useParams()
     const url = `http://localhost:5000/order/${id}`;
