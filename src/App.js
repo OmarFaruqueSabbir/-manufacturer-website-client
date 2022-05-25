@@ -4,8 +4,8 @@ import RequireAdmin from './components/auth/requireAdmin';
 import RequireAuth from './components/auth/requireAuth';
 import Navbar from './components/shared/Navbar/Navbar';
 import AddReview from './pages/Dashboard/AddReview';
-import AllUsers from './pages/Dashboard/AllUsers';
 import Dashboard from './pages/Dashboard/Dashboard';
+import ManageOrders from './pages/Dashboard/ManageOrders';
 import MyOrders from './pages/Dashboard/MyOrders';
 import Payment from './pages/Dashboard/Payment';
 import Users from './pages/Dashboard/Users';
@@ -30,6 +30,7 @@ function App() {
         <Route path='allUsers' element={<RequireAdmin><Users /></RequireAdmin>}></Route>
         <Route path='payment/:id' element={<Payment />}></Route>
         <Route path='addReview' element={<AddReview />}></Route>
+        <Route path='manageOrders' element={<ManageOrders />}></Route>
 
         </Route>
 
