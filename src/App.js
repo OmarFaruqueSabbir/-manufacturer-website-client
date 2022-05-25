@@ -31,14 +31,14 @@ function App() {
         <Route path='/register' element={<Register />} />
 
         <Route path='/dashboard' element={<RequireAuth> <Dashboard /> </RequireAuth>}>
-        <Route index element={<MyOrders></MyOrders>}></Route>
+        <Route index element={<InsertProfile />}></Route>
+        <Route path='myOrders' element={<MyOrders />}></Route>
         <Route path='allUsers' element={<RequireAdmin><Users /></RequireAdmin>}></Route>
         <Route path='payment/:id' element={<Payment />}></Route>
         <Route path='addReview' element={<AddReview />}></Route>
         <Route path='manageOrders' element={<ManageOrders />}></Route>
         <Route path='manageProducts' element={<ManageProducts />}></Route>
         <Route path='addProducts' element={<AddProducts />}></Route>
-        <Route path='insertProfile' element={<InsertProfile />}></Route>
         <Route path='myProfile' element={<MyProfile />}></Route>
         <Route path='update/:id' element={<UpdateProfile />}></Route>
 
