@@ -7,10 +7,9 @@ import auth from '../../../firebase.init';
 
 const ToolPurchase = () => {
     const { toolId } = useParams();
-    const [user, loading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const [tool, setTool] = useState({});
-    const [control, setControl] = useState(false);
-
+    const [manage, setManage] = useState(false);
     const [agree, setAgree] = useState(true)
 
 
@@ -20,7 +19,20 @@ const ToolPurchase = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setTool(data));
-    }, [control]);
+    }, [manage]);
+
+    const handleQuantityChange=(event)=>{
+        const userInput= parseInt(event.target.value)
+
+  
+        if(userInput > tool.availableQuantity || userInput < tool.minimumQuantity ){
+          setAgree(false)
+          return toast.error("Please give value more than minimum Quantity & less than available Quantity");
+        }else{
+            setAgree(true)
+        }
+  
+      }
 
 
     
@@ -45,15 +57,6 @@ const ToolPurchase = () => {
             phone: event.target.phone.value
         }
 
-        if (event.target.order.value > tool.availableQuantity) {
-            setAgree(!agree)
-            toast.error('Sorry!! Item amount exceeded')
-
-        } else if (event.target.order.value < tool.minimumQuantity) {
-            setAgree(!agree)
-            toast.error('Please increase order amount')
-        } else {
-            setAgree(agree)
             fetch(`http://localhost:5000/order/${toolId}`, {
                 method: 'PATCH',
                 headers: {
@@ -65,10 +68,10 @@ const ToolPurchase = () => {
                 .then(result => {
                     console.log(result);
                     toast.success("order placed..")
-                    setControl(!control)
+                    setManage(!manage)
                     event.target.reset()
                 })
-        };
+        
     }
 
     return (
@@ -92,7 +95,7 @@ const ToolPurchase = () => {
                     <input name='email' type="email" disabled value={user?.email || ""} className="mb-2 input input-bordered w-full max-w-md" />
 
                     <label htmlFor="email" className="text-sm text-left font-medium">Input Order Quantity</label>
-                    <input name='order' defaultValue={tool?.minimumQuantity} type="number" className="input mb-2 input-bordered w-full max-w-md" />
+                    <input onBlur={handleQuantityChange} name='order' defaultValue={tool?.minimumQuantity} type="number" className="input mb-2 input-bordered w-full max-w-md" />
 
                     <input name='address' type="text" placeholder="Address" className="input input-bordered mb-2 w-full max-w-md" />
 
@@ -104,12 +107,9 @@ const ToolPurchase = () => {
                     >
                         Submit
                     </button>
-
                 </form>
                 <ToastContainer />
             </div>
-
-
         </div>
     );
 };
