@@ -18,6 +18,7 @@ import Login from './pages/Login/Login/Login';
 import Register from './pages/Login/Register/Register';
 import MyProfile from './pages/Dashboard/MyProfile';
 import UpdateProfile from './pages/Dashboard/UpdateProfile';
+import Portfolio from './pages/Portfolio/Portfolio';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/tool/:toolId' element={<ToolPurchase />}></Route>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/portfolio' element={<Portfolio />} />
 
         <Route path='/dashboard' element={<RequireAuth> <Dashboard /> </RequireAuth>}>
         <Route index element={<InsertProfile />}></Route>

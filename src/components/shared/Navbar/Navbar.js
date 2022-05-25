@@ -22,14 +22,14 @@ const Navbar = () => {
 
 
                     <div className="flex items-center flex-shrink-0">
-                        {/* <Link to='/home'>
-                <img
-                  className="h-9 w-9"
-                  src={logo}
-                  alt="Workflow"
-                />
-              </Link>
-   */}
+                        <Link to='/home'>
+                            <img
+                                className="h-9 w-9"
+                                src={logo}
+                                alt="Workflow"
+                            />
+                        </Link>
+
 
                         <h1 className="text-white text-2xl font-mono "> National Tools</h1>
                     </div>
@@ -44,10 +44,10 @@ const Navbar = () => {
                             </LinkCustom>
 
                             <LinkCustom
-                                to='/reviews'
+                                to='/portfolio'
                                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                             >
-                                REVIEWS
+                                PORTFOLIO
                             </LinkCustom>
 
                             <LinkCustom
@@ -72,7 +72,13 @@ const Navbar = () => {
                             </LinkCustom>
                             {
                                 user ?
-                                    <button className='bg-orange-500 p-2 rounded text-white' onClick={handleSignOut}>signOut</button>
+                                    <>
+                                        <p className='text-orange-400 text-xl'>{user.displayName}</p>
+                                        
+                                        <button className='bg-orange-500 p-2 rounded text-white' onClick={handleSignOut}>signOut</button>
+
+                                    </>
+
                                     :
                                     <LinkCustom
                                         to='/login'
@@ -131,10 +137,10 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-start">
-                        <label tabIndex="1" for="dashboard-sidebar" className="btn btn-primary drawer-button lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                        </label>
-                    </div>
+                <label tabIndex="1" for="dashboard-sidebar" className="btn btn-primary drawer-button lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
+            </div>
 
             <Transition
                 show={isOpen}
@@ -147,7 +153,7 @@ const Navbar = () => {
             >
                 {(ref) => (
                     <div className="md:hidden" id="mobile-menu">
-                        
+
                         <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                             <LinkCustom
                                 to='/home'
@@ -183,6 +189,22 @@ const Navbar = () => {
                             >
                                 ABOUT
                             </LinkCustom>
+                            {
+                                user ?
+                                    <>
+                                        <p className='text-orange-400 text-xl'>{user.displayName}</p>
+                                        <button className='bg-orange-500 p-2 rounded text-white' onClick={handleSignOut}>signOut</button>
+
+                                    </>
+
+                                    :
+                                    <LinkCustom
+                                        to='/login'
+                                        className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                    >
+                                        LOGIN
+                                    </LinkCustom>
+                            }
                         </div>
                     </div>
                 )}
