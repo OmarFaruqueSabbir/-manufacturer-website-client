@@ -1,16 +1,10 @@
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
-import auth from '../../firebase.init';
 
 const Portfolio = () => {
-    const [user] = useAuthState(auth);
     return (
         <div>
 
             <section className="bg-white dark:bg-gray-800">
-
-
                 <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
                     <div className="w-full lg:w-1/2">
                         <div className="lg:max-w-lg w-full mt-8 bg-transparent border rounded-md px-7 py-2 dark:border-gray-700 focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300 dark:focus-within:border-blue-400 focus-within:ring-opacity-40">
@@ -25,7 +19,7 @@ const Portfolio = () => {
                                     <h1 className="mx-2 text-left"> <span className='font-bold '>Education :</span> International Islamic University Chittagong </h1>
                                 </div>
                                 <div>
-                                <h1 className="mx-2 text-left"> <span className='font-bold '>Skills :</span> </h1>
+                                    <h1 className="mx-2 text-left"> <span className='font-bold '>Skills :</span> </h1>
                                 </div>
 
                                 <p className="flex items-center -mx-2 text-gray-700 dark:text-gray-200">
@@ -61,21 +55,21 @@ const Portfolio = () => {
 
                                 <h1 className="mx-2 text-left"> <span className='font-bold  '>Project Links :</span> </h1>
                                 <a href='https://warehouse-management-34b7d.web.app/'>
-                                <button type="button" className="h-10 px-4 py-2 m-1 text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-orange-400 focus:outline-none focus:bg-orange-400">
-                                    Project 1
-                                </button>
+                                    <button type="button" className="h-10 px-4 py-2 m-1 text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-orange-400 focus:outline-none focus:bg-orange-400">
+                                        Project 1
+                                    </button>
                                 </a>
 
                                 <a href='https://product-analysis-website-omarfaruquesabbir.netlify.app'>
-                                <button type="button" className="h-10 px-4 py-2 m-1 text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-orange-400 focus:outline-none focus:bg-orange-400">
-                                    Project 2
-                                </button>
+                                    <button type="button" className="h-10 px-4 py-2 m-1 text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-orange-400 focus:outline-none focus:bg-orange-400">
+                                        Project 2
+                                    </button>
                                 </a>
-                                
+
                                 <a href='https://independent-service-prov-d4233.web.app/'>
-                                <button type="button" className="h-10 px-4 py-2 m-1 text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-orange-400 focus:outline-none focus:bg-orange-400">
-                                    Project 3
-                                </button>
+                                    <button type="button" className="h-10 px-4 py-2 m-1 text-white transition-colors duration-200 transform bg-orange-500 rounded-md hover:bg-orange-400 focus:outline-none focus:bg-orange-400">
+                                        Project 3
+                                    </button>
                                 </a>
                             </div>
                         </div>

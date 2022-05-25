@@ -37,10 +37,10 @@ const ManageOrders = () => {
         <div>
             <h2>Orders: {orders?.length} </h2>
 
-            <div class="overflow-x-auto">
+            <div className="overflow-x-auto">
             {
                     orders.length > 0 ? 
-                    <table class="table w-full">
+                    <table className="table w-full">
 
                     <thead>
                         <tr>

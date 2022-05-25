@@ -26,10 +26,10 @@ const ManageProducts = () => {
     return (
         <div>
             <h3 className='text-3xl  mt-5 mb-5 font-medium'>Manage All Products</h3>
-            <div class="overflow-x-auto">
+            <div className="overflow-x-auto">
                 {
                     tools.length > 0 ?
-                        <table class="table w-full">
+                        <table className="table w-full">
 
                             <thead>
                                 <tr>

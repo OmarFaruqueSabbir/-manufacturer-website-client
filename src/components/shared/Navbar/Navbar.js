@@ -64,17 +64,11 @@ const Navbar = () => {
                                 BLOGS
                             </LinkCustom>
 
-                            <LinkCustom
-                                to='/about'
-                                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                            >
-                                ABOUT
-                            </LinkCustom>
                             {
                                 user ?
                                     <>
                                         <p className='text-orange-400 text-xl'>{user.displayName}</p>
-                                        
+
                                         <button className='bg-orange-500 p-2 rounded text-white' onClick={handleSignOut}>signOut</button>
 
                                     </>
@@ -183,12 +177,6 @@ const Navbar = () => {
                                 BLOGS
                             </LinkCustom>
 
-                            <LinkCustom
-                                to='/about'
-                                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                            >
-                                ABOUT
-                            </LinkCustom>
                             {
                                 user ?
                                     <>
