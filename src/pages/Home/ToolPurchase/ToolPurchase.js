@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { set } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import Loading from '../../../components/Loading/Loading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../../firebase.init';
 
 const ToolPurchase = () => {
@@ -10,7 +11,6 @@ const ToolPurchase = () => {
     const [user, loading] = useAuthState(auth);
     const [tool, setTool] = useState({});
     const [control, setControl] = useState(false);
-
 
     const [agree, setAgree] = useState(true)
 
@@ -48,11 +48,11 @@ const ToolPurchase = () => {
 
         if (event.target.order.value > tool.availableQuantity) {
             setAgree(!agree)
-            alert('Sorry!! Item amount exceeded')
+            toast.error('Sorry!! Item amount exceeded')
 
         } else if (event.target.order.value < tool.minimumQuantity) {
             setAgree(!agree)
-            alert('Please increase order amount')
+            toast.error('Please increase order amount')
         } else {
             setAgree(agree)
             fetch(`http://localhost:5000/order/${toolId}`, {
@@ -65,7 +65,7 @@ const ToolPurchase = () => {
                 .then(res => res.json())
                 .then(result => {
                     console.log(result);
-                    alert("order placed..")
+                    toast.success("order placed..")
                     setControl(!control)
                     event.target.reset()
                 })
@@ -107,7 +107,9 @@ const ToolPurchase = () => {
                     </button>
 
                 </form>
+                <ToastContainer />
             </div>
+
 
         </div>
     );

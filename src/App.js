@@ -3,6 +3,7 @@ import './App.css';
 import RequireAdmin from './components/auth/requireAdmin';
 import RequireAuth from './components/auth/requireAuth';
 import Navbar from './components/shared/Navbar/Navbar';
+import AddProducts from './pages/Dashboard/AddProducts';
 import AddReview from './pages/Dashboard/AddReview';
 import Dashboard from './pages/Dashboard/Dashboard';
 import ManageOrders from './pages/Dashboard/ManageOrders';
@@ -33,6 +34,7 @@ function App() {
         <Route path='addReview' element={<AddReview />}></Route>
         <Route path='manageOrders' element={<ManageOrders />}></Route>
         <Route path='manageProducts' element={<ManageProducts />}></Route>
+        <Route path='addProducts' element={<AddProducts />}></Route>
 
         </Route>
 

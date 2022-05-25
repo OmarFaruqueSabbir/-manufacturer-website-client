@@ -36,8 +36,6 @@ const AddReview = () => {
                     {errors.name && <p>Name is required.</p>}
                     <textarea className='mb-2' placeholder='Comments' {...register("comment")} />
                     <input className='mb-2 py-2' placeholder='Rating' type="number" {...register("rating")} />
-                    {/* <input className='mb-2' placeholder='Photo URL' type="text" {...register("img")} />
-                    {errors.img && <p>Please enter image url.</p>} */}
                     <button
                         className="mt-4 w-full bg-gray-900 text-green-100 border shadow py-3 px-6 font-semibold text-md rounded"
                         type="submit"
