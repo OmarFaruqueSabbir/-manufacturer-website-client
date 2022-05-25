@@ -8,6 +8,7 @@ import AllUsers from './pages/Dashboard/AllUsers';
 import Dashboard from './pages/Dashboard/Dashboard';
 import MyOrders from './pages/Dashboard/MyOrders';
 import Payment from './pages/Dashboard/Payment';
+import Users from './pages/Dashboard/Users';
 import Home from './pages/Home/Home';
 import ToolPurchase from './pages/Home/ToolPurchase/ToolPurchase';
 import Login from './pages/Login/Login/Login';
@@ -26,7 +27,7 @@ function App() {
 
         <Route path='/dashboard' element={<RequireAuth> <Dashboard /> </RequireAuth>}>
         <Route index element={<MyOrders></MyOrders>}></Route>
-        <Route path='allUsers' element={<RequireAdmin><AllUsers /></RequireAdmin>}></Route>
+        <Route path='allUsers' element={<RequireAdmin><Users /></RequireAdmin>}></Route>
         <Route path='payment/:id' element={<Payment />}></Route>
         <Route path='addReview' element={<AddReview />}></Route>
 
