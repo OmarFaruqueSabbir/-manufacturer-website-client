@@ -9,12 +9,14 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import ManageOrders from './pages/Dashboard/ManageOrders';
 import ManageProducts from './pages/Dashboard/ManageProducts';
 import MyOrders from './pages/Dashboard/MyOrders';
+import InsertProfile from './pages/Dashboard/InsertProfile';
 import Payment from './pages/Dashboard/Payment';
 import Users from './pages/Dashboard/Users';
 import Home from './pages/Home/Home';
 import ToolPurchase from './pages/Home/ToolPurchase/ToolPurchase';
 import Login from './pages/Login/Login/Login';
 import Register from './pages/Login/Register/Register';
+import MyProfile from './pages/Dashboard/MyProfile';
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route path='manageOrders' element={<ManageOrders />}></Route>
         <Route path='manageProducts' element={<ManageProducts />}></Route>
         <Route path='addProducts' element={<AddProducts />}></Route>
+        <Route path='insertProfile' element={<InsertProfile />}></Route>
+        <Route path='myProfile' element={<MyProfile />}></Route>
 
         </Route>
 
