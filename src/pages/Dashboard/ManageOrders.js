@@ -64,7 +64,7 @@ const ManageOrders = () => {
                                 <td>{order.toolId}</td>
                                 <td>{order.tool}</td>
                                 <td>{order.quantity}</td>
-                                <td><button onClick={() => deleteItem(order._id)} className='btn bg-red-600 text-white' >Cancel</button></td>
+                                <td onClick={() => deleteItem(order._id)}><button  className="font-medium text-red-500 dark:text-red-600 hover:underline">Delete</button></td>
 
                             </tr>)
                         }

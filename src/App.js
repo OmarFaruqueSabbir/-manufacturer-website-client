@@ -6,6 +6,7 @@ import Navbar from './components/shared/Navbar/Navbar';
 import AddReview from './pages/Dashboard/AddReview';
 import Dashboard from './pages/Dashboard/Dashboard';
 import ManageOrders from './pages/Dashboard/ManageOrders';
+import ManageProducts from './pages/Dashboard/ManageProducts';
 import MyOrders from './pages/Dashboard/MyOrders';
 import Payment from './pages/Dashboard/Payment';
 import Users from './pages/Dashboard/Users';
@@ -31,6 +32,7 @@ function App() {
         <Route path='payment/:id' element={<Payment />}></Route>
         <Route path='addReview' element={<AddReview />}></Route>
         <Route path='manageOrders' element={<ManageOrders />}></Route>
+        <Route path='manageProducts' element={<ManageProducts />}></Route>
 
         </Route>
 
