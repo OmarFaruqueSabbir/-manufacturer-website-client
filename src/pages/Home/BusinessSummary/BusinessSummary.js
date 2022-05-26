@@ -13,7 +13,7 @@ const BusinessSummary = () => {
                             </svg>
                         </div>
                         <div className="flex  items-center justify-between flex-1 p-3">
-                            <p className="text-2xl font-semibold">200K+</p>
+                            <p className="text-2xl font-semibold">500K+</p>
                             <p className="text-xl font-medium">Orders</p>
                         </div>
                     </div>
@@ -24,7 +24,7 @@ const BusinessSummary = () => {
                             </svg>
                         </div>
                         <div className="flex items-center justify-between flex-1 p-3">
-                            <p className="text-2xl font-semibold">7 5000+</p>
+                            <p className="text-2xl font-semibold">750000+</p>
                             <p className='text-xl font-medium'>Customers</p>
                         </div>
                     </div>
