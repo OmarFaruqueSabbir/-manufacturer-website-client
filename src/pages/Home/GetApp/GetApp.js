@@ -63,7 +63,7 @@ const GetApp = () => {
                         </div>
                     </div>
 
-                    <div class="flex justify-center xl:w-1/2">
+                    <div class="flex justify-center xl:w-1/2 sm:pt-7 lg:pt-0">
                         <img class="h-80 w-80 sm:w-[28rem] sm:h-[28rem] flex-shrink-0 object-cover rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465" alt="" />
                     </div>
                 </div>

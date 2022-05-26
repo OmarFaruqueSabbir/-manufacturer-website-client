@@ -20,6 +20,7 @@ import MyProfile from './pages/Dashboard/MyProfile';
 import UpdateProfile from './pages/Dashboard/UpdateProfile';
 import Portfolio from './pages/Portfolio/Portfolio';
 import Footer from './components/shared/Footer/Footer';
+import Blogs from './pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -28,10 +29,11 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
-        <Route path='/tool/:toolId' element={<ToolPurchase />}></Route>
+        <Route path='/tool/:toolId' element={<RequireAuth> <ToolPurchase /> </RequireAuth>}></Route>
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/portfolio' element={<Portfolio />} />
+        <Route path='/blogs' element={<Blogs />} />
 
         <Route path='/dashboard' element={<RequireAuth> <Dashboard /> </RequireAuth>}>
         <Route index element={<InsertProfile />}></Route>

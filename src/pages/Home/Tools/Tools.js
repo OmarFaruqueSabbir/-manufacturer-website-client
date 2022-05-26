@@ -11,7 +11,7 @@ const Tools = () => {
     }, []);
     return (
         <div>
-            <h2 style={{ fontFamily: "poppins" }} className='text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl mt-5 pt-5'>Tools</h2>
+            <h2 style={{ fontFamily: "poppins" }} className='text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl mt-5 mb-5 '>Tools</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center'>
                 {
                     tools?.slice(-6).map((tool) => (

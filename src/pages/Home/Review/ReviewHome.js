@@ -12,7 +12,8 @@ const ReviewHome = ({ review }) => {
                 </div>
                 <div className=' flex flex-col justify-end'>
                     <h3 className='text-slate-800 text-2xl font-medium'>{name}</h3>
-                    <span style={{ fontFamily: "poppins" }} className=' text-gray-600 text-xs text-left mt-2'>{comment}</span>
+                    <span style={{ fontFamily: "poppins" }} className=' text-gray-600 text-xs text-left mt-2'> <strong>comment : </strong>
+                     {comment}</span>
                     <span className='text-gray-700 mt-3 font-medium text-l'>rating :  {rating} <Rating
                         initialRating={rating}
                         emptySymbol={<FontAwesomeIcon icon={faStar} />}
