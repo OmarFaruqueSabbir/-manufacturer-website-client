@@ -1,45 +1,34 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
 import { Link, useNavigate } from 'react-router-dom';
+import Loading from '../../components/Loading/Loading';
 import auth from '../../firebase.init';
+import DeleteModal from './DeleteModal';
+import ManageOrderRow from './ManageOrderRow';
 
 const ManageOrders = () => {
-    const [orders, setOrders] = useState([])
-    console.log(orders)
-    useEffect(() => {
-        fetch('http://localhost:5000/order',{
-            method: 'GET',
-            headers:{
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setOrders(data));
-    }, []);
+    const [user] = useAuthState(auth);
+    const [deleteOrder, setDeleteOrder] = useState(null)
+ 
 
-    const deleteItem = id => {
-        const agree =   window.confirm('Want to delete Items?');
-        if (agree) {
-            const url = `http://localhost:5000/order/${id}`
-            fetch(url, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                    const remaining = orders.filter(order => order._id !== id);
-                    setOrders(remaining);
-                })
+    const { data: orders, isLoading,refetch } = useQuery('orders', () => fetch("http://localhost:5000/order", {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
+    }).then(res => res.json()))
+
+    if (isLoading) {
+        return <Loading></Loading>
     }
+
+    
     return (
         <div>
             <h2>Orders: {orders?.length} </h2>
 
             <div className="overflow-x-auto">
-            {
-                    orders.length > 0 ? 
                     <table className="table w-full">
 
                     <thead>
@@ -55,28 +44,29 @@ const ManageOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
+                        
                         {
-                            orders?.map((order,index) =>
-                                <tr className='hover' key={order._id}>
-                                <th>{index+1}</th>
-                                <td>{order.user}</td>
-                                <td>{order.userName}</td>
-                                <td>{order.toolId}</td>
-                                <td>{order.tool}</td>
-                                <td>{order.quantity}</td>
-                                <td onClick={() => deleteItem(order._id)}><button  className="font-medium text-red-500 dark:text-red-600 hover:underline">Delete</button></td>
-
-                            </tr>)
+                            orders.map((order, index) => <ManageOrderRow
+                                key={order._id}
+                                order={order}
+                                index={index}
+                                refetch={refetch}
+                                setDeleteOrder={setDeleteOrder}
+                            ></ManageOrderRow>)
                         }
+                        
 
                     </tbody>
                 </table>
-                :
-                <></>
-                    
-}
 
             </div>
+            {
+               deleteOrder && <DeleteModal
+               deleteOrder={deleteOrder}
+               setDeleteOrder={setDeleteOrder}
+               refetch={refetch}
+               ></DeleteModal> 
+            }
         </div>
     );
 };
