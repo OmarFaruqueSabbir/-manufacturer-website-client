@@ -32,8 +32,8 @@ const InsertProfile = () => {
     }
     return (
         <div>
-            <h3 style={{ fontFamily: "poppins" }} className='text-3xl mt-5 mb-10 font-bold'>Your Profile</h3>
-            {/* <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 justify-items-center mt-2'> */}
+            <h3 style={{ fontFamily: "poppins" }} className='text-3xl mt-5 mb-10 font-bold'>Insert Info to Create Your Profile</h3>
+
             <form onSubmit={handleSubmit}  className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
 
                 <input name='name' type="text" disabled value={user?.displayName || ""} className="input input-bordered w-full max-w-xs" />

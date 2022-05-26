@@ -13,7 +13,7 @@ const ManageOrderRow = ({order, index, setDeleteOrder}) => {
             <td>{tool}</td>
             <td>{quantity}</td>
             <td>
-                <label onClick={() => setDeleteOrder(order)} for="delete-confirm-modal" className="btn btn-sm btn-error">Delete</label>
+                <label onClick={() => setDeleteOrder(order)} htmlFor="delete-confirm-modal" className="btn btn-sm btn-error">Delete</label>
             </td>
         </tr>
     );

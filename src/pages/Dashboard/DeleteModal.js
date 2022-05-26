@@ -28,7 +28,7 @@ const DeleteModal = ({ deleteOrder, setDeleteOrder,refetch }) => {
                     <p className="py-4">Pressing Delete button will remove your order from our records.</p>
                     <div className="modal-action">
                         <button onClick={() => handleDelete()} className="btn btn-xs btn-error">DELETE</button>
-                        <label for="delete-confirm-modal" className="btn btn-xs">Close</label>
+                        <label htmlFor="delete-confirm-modal" className="btn btn-xs">Close</label>
                     </div>
                 </div>
                 <ToastContainer />

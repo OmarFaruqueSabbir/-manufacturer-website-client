@@ -22,6 +22,7 @@ import UpdateProfile from './pages/Dashboard/UpdateProfile';
 import Portfolio from './pages/Portfolio/Portfolio';
 import Footer from './components/shared/Footer/Footer';
 import Blogs from './pages/Blogs/Blogs';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 function App() {
   return (
@@ -49,9 +50,9 @@ function App() {
         <Route path='addProducts' element={<RequireAdmin><AddProducts /></RequireAdmin>}></Route>
         <Route path='myProfile' element={<MyProfile />}></Route>
         <Route path='update/:id' element={<UpdateProfile />}></Route>
-
         </Route>
 
+        <Route path='*' element={<ErrorPage />}></Route>
       </Routes>
       <Footer />
     </div>
