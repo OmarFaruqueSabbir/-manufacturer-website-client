@@ -9,7 +9,7 @@ const MyProfile = () => {const [infos, setInfos] = useState([])
     const navigate = useNavigate()
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/profiles?user=${user.email}`,{
+            fetch(`https://frozen-river-30466.herokuapp.com/profiles?user=${user.email}`,{
                 method: 'GET',
                 headers:{
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -32,7 +32,7 @@ const MyProfile = () => {const [infos, setInfos] = useState([])
     // const deleteItem = id => {
     //     const agree =   window.confirm('Want to delete Items?');
     //     if (agree) {
-    //         const url = `http://localhost:5000/order/${id}`
+    //         const url = `https://frozen-river-30466.herokuapp.com/order/${id}`
     //         fetch(url, {
     //             method: 'DELETE'
     //         })

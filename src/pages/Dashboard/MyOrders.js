@@ -13,7 +13,7 @@ const MyOrders = () => {
     const [deleteOrder, setDeleteOrder] = useState(null)
  
 
-    const { data: orders, isLoading,refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order?user=${user.email}`, {
+    const { data: orders, isLoading,refetch } = useQuery('orders', () => fetch(`https://frozen-river-30466.herokuapp.com/order?user=${user.email}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

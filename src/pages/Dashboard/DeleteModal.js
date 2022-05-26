@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const DeleteModal = ({ deleteOrder, setDeleteOrder,refetch }) => {
     const { tool, user } = deleteOrder;
     const handleDelete = () => {
-        fetch(`http://localhost:5000/order/${user}`, {
+        fetch(`https://frozen-river-30466.herokuapp.com/order/${user}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

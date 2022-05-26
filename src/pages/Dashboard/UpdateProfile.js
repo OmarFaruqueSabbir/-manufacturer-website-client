@@ -20,7 +20,7 @@ const UpdateProfile = () => {
             location: event.target.location.value,
             phone: event.target.phone.value
         }
-            fetch(`http://localhost:5000/profiles/${id}`, {
+            fetch(`https://frozen-river-30466.herokuapp.com/profiles/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'

@@ -12,7 +12,7 @@ const CheckoutForm = ({order}) => {
     const {_id,price,user,userName} = order;
 
     useEffect(()=>{
-        fetch('http://localhost:5000/create-payment-intent',{
+        fetch('https://frozen-river-30466.herokuapp.com/create-payment-intent',{
             method: 'POST',
             headers:{
                 'content-type': 'application/json',
@@ -80,7 +80,7 @@ const CheckoutForm = ({order}) => {
             order: _id,
             transactionId: paymentIntent.id
         }
-        fetch(`http://localhost:5000/order/${_id}`,{
+        fetch(`https://frozen-river-30466.herokuapp.com/order/${_id}`,{
             method: 'PUT',
             headers:{
                 'content-type': 'application/json',

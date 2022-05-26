@@ -16,7 +16,7 @@ const InsertProfile = () => {
             location: event.target.location.value,
             phone: event.target.phone.value
         }
-            fetch(`http://localhost:5000/profiles`, {
+            fetch(`https://frozen-river-30466.herokuapp.com/profiles`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

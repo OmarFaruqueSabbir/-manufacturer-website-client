@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const ManageProducts = () => {
     const [tools, setTools] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/tools')
+        fetch('https://frozen-river-30466.herokuapp.com/tools')
             .then(res => res.json())
             .then(data => setTools(data));
     }, []);
@@ -11,7 +11,7 @@ const ManageProducts = () => {
     const deleteItem = id => {
         const agree = window.confirm('Want to delete Tools?');
         if (agree) {
-            const url = `http://localhost:5000/tools/${id}`
+            const url = `https://frozen-river-30466.herokuapp.com/tools/${id}`
             fetch(url, {
                 method: 'DELETE'
             })

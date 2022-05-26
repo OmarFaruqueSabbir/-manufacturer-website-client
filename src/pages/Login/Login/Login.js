@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import {  useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../../components/Loading/Loading';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -16,6 +18,9 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
+    const [sendPasswordResetEmail, loading1] = useSendPasswordResetEmail(
+        auth);
 
     const [token] = useToken(user)
 
@@ -54,6 +59,17 @@ const Login = () => {
 
        await signInWithEmailAndPassword(email, password);
 
+    }
+
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+        console.log(email)
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Email sent for reset');
+        } else {
+            toast('please enter your mail');
+        }
     }
     return (
         <div>
@@ -132,7 +148,7 @@ const Login = () => {
                     </div>
                     <button className="flex items-center justify-center h-12 px-6 w-80 bg-gray-800 mt-8 rounded font-semibold text-sm text-blue-100 hover:bg-gray-900">Login</button>
                     <div className="flex mt-6 justify-center text-xs">
-                        <a className="text-blue-400 pr-5  hover:text-blue-500" href="#">Forgot Password?</a>
+                        <p onClick={resetPassword} className="text-blue-400 pr-5  hover:text-blue-500">Forgot Password?</p>
                         <span className="mx-2 text-gray-300">/</span>
                         <p className="text-blue-400 hover:text-blue-500">
                            <span onClick={gotoRegister}>New User? Sign Up here..</span></p>
@@ -141,6 +157,7 @@ const Login = () => {
                             errorMessage
                     }
                     <div className="divider">OR</div>
+                    <ToastContainer />
                     <SocialLogin />
 
                 </form>

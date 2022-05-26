@@ -13,7 +13,7 @@ const AddReview = () => {
         formState: { errors },
     } = useForm();
     const onSubmit = (data,event) => {
-        const url = `http://localhost:5000/reviews`
+        const url = `https://frozen-river-30466.herokuapp.com/reviews`
         fetch(url, {
             method: 'POST',
             headers: {

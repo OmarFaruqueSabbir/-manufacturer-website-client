@@ -10,7 +10,7 @@ const AddProducts = () => {
         formState: { errors },
     } = useForm();
     const onSubmit = (data,event) => {
-        const url = `http://localhost:5000/tools`
+        const url = `https://frozen-river-30466.herokuapp.com/tools`
         fetch(url, {
             method: 'POST',
             headers: {

@@ -14,7 +14,7 @@ const ToolPurchase = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/tools/${toolId}`;
+        const url = `https://frozen-river-30466.herokuapp.com/tools/${toolId}`;
         console.log(url);
         fetch(url)
             .then(res => res.json())
@@ -57,7 +57,7 @@ const ToolPurchase = () => {
             phone: event.target.phone.value
         }
 
-            fetch(`http://localhost:5000/order/${toolId}`, {
+            fetch(`https://frozen-river-30466.herokuapp.com/order/${toolId}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'
