@@ -4,7 +4,7 @@ const Portfolio = () => {
     return (
         <div>
 
-            <section className="bg-white dark:bg-gray-800">
+            <section className="bg-white dark:bg-gray-800 mb-10 mt-7">
                 <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
                     <div className="w-full lg:w-1/2">
                         <div className="lg:max-w-lg w-full mt-8 bg-transparent border rounded-md px-7 py-2 dark:border-gray-700 focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300 dark:focus-within:border-blue-400 focus-within:ring-opacity-40">

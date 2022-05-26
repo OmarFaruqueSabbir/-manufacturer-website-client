@@ -19,6 +19,7 @@ import Register from './pages/Login/Register/Register';
 import MyProfile from './pages/Dashboard/MyProfile';
 import UpdateProfile from './pages/Dashboard/UpdateProfile';
 import Portfolio from './pages/Portfolio/Portfolio';
+import Footer from './components/shared/Footer/Footer';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         </Route>
 
       </Routes>
+      <Footer />
     </div>
   );
 }
