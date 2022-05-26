@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import RequireAdmin from './components/auth/requireAdmin';
+import RequireUser from './components/auth/requireUser';
 import RequireAuth from './components/auth/requireAuth';
 import Navbar from './components/shared/Navbar/Navbar';
 import AddProducts from './pages/Dashboard/AddProducts';
@@ -37,13 +38,15 @@ function App() {
 
         <Route path='/dashboard' element={<RequireAuth> <Dashboard /> </RequireAuth>}>
         <Route index element={<InsertProfile />}></Route>
-        <Route path='myOrders' element={<MyOrders />}></Route>
+        <Route path='myOrders' element={<RequireUser><MyOrders /></RequireUser>}></Route>
         <Route path='allUsers' element={<RequireAdmin><Users /></RequireAdmin>}></Route>
         <Route path='payment/:id' element={<Payment />}></Route>
-        <Route path='addReview' element={<AddReview />}></Route>
-        <Route path='manageOrders' element={<ManageOrders />}></Route>
-        <Route path='manageProducts' element={<ManageProducts />}></Route>
-        <Route path='addProducts' element={<AddProducts />}></Route>
+        <Route path='addReview' element={<RequireUser><AddReview /></RequireUser>}></Route>
+        <Route path='manageOrders' element={
+          <RequireAdmin><ManageOrders /></RequireAdmin>
+        }></Route>
+        <Route path='manageProducts' element={<RequireAdmin><ManageProducts /></RequireAdmin>}></Route>
+        <Route path='addProducts' element={<RequireAdmin><AddProducts /></RequireAdmin>}></Route>
         <Route path='myProfile' element={<MyProfile />}></Route>
         <Route path='update/:id' element={<UpdateProfile />}></Route>
 
