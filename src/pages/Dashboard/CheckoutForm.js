@@ -28,6 +28,7 @@ const CheckoutForm = ({order}) => {
     },[price])
 
     const handleSubmit = async (event) =>{
+        // const status = 'pending'
         event.preventDefault();
 
         if (!stripe || !elements) {
@@ -80,7 +81,8 @@ const CheckoutForm = ({order}) => {
             order: _id,
             transactionId: paymentIntent.id
         }
-        fetch(`https://frozen-river-30466.herokuapp.com/order/${_id}`,{
+        console.log(payment)
+        fetch(`http://localhost:5000/order/${_id}`,{
             method: 'PUT',
             headers:{
                 'content-type': 'application/json',

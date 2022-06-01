@@ -39,6 +39,8 @@ const ManageOrders = () => {
                             <th>ToolId</th>
                             <th>Tool</th>
                             <th>Quantity</th>
+                            <th>paid</th>
+                            <th>Status</th>
                             <th>Action</th>
 
                         </tr>
